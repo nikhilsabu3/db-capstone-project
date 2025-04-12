@@ -282,9 +282,9 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `LittleLemonDB`;
-INSERT INTO `LittleLemonDB`.`Orders` (`OrderID`, `OrderDate`, `BookingID`, `BillAmount`, `SaleQuantity`, `TotalCost`, `Discount`) VALUES ('1', '25/08/2020', 2, 353, 1, 200, 20);
-INSERT INTO `LittleLemonDB`.`Orders` (`OrderID`, `OrderDate`, `BookingID`, `BillAmount`, `SaleQuantity`, `TotalCost`, `Discount`) VALUES ('2', '17/08/2021', 3, 113, 3, 51, 0);
-INSERT INTO `LittleLemonDB`.`Orders` (`OrderID`, `OrderDate`, `BookingID`, `BillAmount`, `SaleQuantity`, `TotalCost`, `Discount`) VALUES ('3', '15/06/2020', 1, 188, 2, 43, 9);
+INSERT INTO `LittleLemonDB`.`Orders` (`OrderID`, `OrderDate`, `BookingID`, `BillAmount`, `SaleQuantity`, `TotalCost`, `Discount`) VALUES ('1', '25/08/2020', 2, 353, 3, 200, 20);
+INSERT INTO `LittleLemonDB`.`Orders` (`OrderID`, `OrderDate`, `BookingID`, `BillAmount`, `SaleQuantity`, `TotalCost`, `Discount`) VALUES ('2', '17/08/2021', 3, 113, 2, 51, 0);
+INSERT INTO `LittleLemonDB`.`Orders` (`OrderID`, `OrderDate`, `BookingID`, `BillAmount`, `SaleQuantity`, `TotalCost`, `Discount`) VALUES ('3', '15/06/2020', 1, 188, 4, 43, 9);
 
 COMMIT;
 
