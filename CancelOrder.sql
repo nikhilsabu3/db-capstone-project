@@ -17,7 +17,7 @@ END //
 DELIMITER ;
 
 INSERT INTO `LittleLemonDB`.`Orders` (`OrderID`, `OrderDate`, `BookingID`, `BillAmount`, `SaleQuantity`, `TotalCost`, `Discount`, `MenuID`) 
-VALUES ('5', '2021-06-23', 1, 222.75, 1, 43.70, 5.5, 1);
+VALUES ('5', '2021-06-23', 5, 222.75, 1, 43.70, 5.5, 1);
 
 CALL CancelOrder(5);
 

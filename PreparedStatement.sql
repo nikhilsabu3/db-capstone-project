@@ -2,5 +2,5 @@ PREPARE GetOrderDetail FROM 'SELECT OrderID, SaleQuantity AS Quantity, TotalCost
 FROM Orders JOIN Bookings ON Orders.BookingID = Bookings.BookingID
 WHERE Bookings.CustomerID = ?';
 
-SET @id = '65-353-0657';
+SET @id = 1;
 EXECUTE GetOrderDetail USING @id; 
