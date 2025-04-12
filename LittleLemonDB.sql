@@ -18,7 +18,7 @@ USE `LittleLemonDB` ;
 -- Table `LittleLemonDB`.`Customers`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `LittleLemonDB`.`Customers` (
-  `CustomerID` VARCHAR(45) NOT NULL,
+  `CustomerID` INT NOT NULL,
   `CustomerName` VARCHAR(255) NOT NULL,
   `ContactNumber` VARCHAR(45) NOT NULL,
   `Email` VARCHAR(255) NULL,
@@ -82,10 +82,11 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `LittleLemonDB`.`Bookings` (
   `BookingID` INT NOT NULL AUTO_INCREMENT,
+  `BookingDate` DATE NOT NULL,
   `TableNo` INT NOT NULL,
-  `BookingSlot` TIME NOT NULL,
-  `CustomerID` VARCHAR(45) NOT NULL,
-  `EmployeeID` INT NOT NULL,
+  `BookingSlot` TIME NULL,
+  `CustomerID` INT NOT NULL,
+  `EmployeeID` INT NULL,
   PRIMARY KEY (`BookingID`),
   INDEX `CustomerID_idx` (`CustomerID` ASC) VISIBLE,
   INDEX `EmployeeID_idx` (`EmployeeID` ASC) VISIBLE,
@@ -199,9 +200,9 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `LittleLemonDB`;
-INSERT INTO `LittleLemonDB`.`Customers` (`CustomerID`, `CustomerName`, `ContactNumber`, `Email`) VALUES ('65-353-0657', 'Giacopo Bramich', '998979676', 'giacopo.bramich@hotmail.com');
-INSERT INTO `LittleLemonDB`.`Customers` (`CustomerID`, `CustomerName`, `ContactNumber`, `Email`) VALUES ('72-055-7985', 'Laney Fadden', '989554432', 'laney.fadden@gmail.com');
-INSERT INTO `LittleLemonDB`.`Customers` (`CustomerID`, `CustomerName`, `ContactNumber`, `Email`) VALUES ('90-876-6799', 'Lia Bonar', '789876554', 'lia.bonar@yahoo.com');
+INSERT INTO `LittleLemonDB`.`Customers` (`CustomerID`, `CustomerName`, `ContactNumber`, `Email`) VALUES (1, 'Giacopo Bramich', '998979676', 'giacopo.bramich@hotmail.com');
+INSERT INTO `LittleLemonDB`.`Customers` (`CustomerID`, `CustomerName`, `ContactNumber`, `Email`) VALUES (2, 'Laney Fadden', '989554432', 'laney.fadden@gmail.com');
+INSERT INTO `LittleLemonDB`.`Customers` (`CustomerID`, `CustomerName`, `ContactNumber`, `Email`) VALUES (3, 'Lia Bonar', '789876554', 'lia.bonar@yahoo.com');
 
 COMMIT;
 
@@ -257,9 +258,9 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `LittleLemonDB`;
-INSERT INTO `LittleLemonDB`.`Bookings` (`BookingID`, `TableNo`, `BookingSlot`, `CustomerID`, `EmployeeID`) VALUES (1, 3, '18:30:00', '72-055-7985', 3);
-INSERT INTO `LittleLemonDB`.`Bookings` (`BookingID`, `TableNo`, `BookingSlot`, `CustomerID`, `EmployeeID`) VALUES (2, 5, '21:00:00', '65-353-0657', 2);
-INSERT INTO `LittleLemonDB`.`Bookings` (`BookingID`, `TableNo`, `BookingSlot`, `CustomerID`, `EmployeeID`) VALUES (3, 2, '19:30:00', '90-876-6799', 5);
+INSERT INTO `LittleLemonDB`.`Bookings` (`BookingID`, `BookingDate`, `TableNo`, `BookingSlot`, `CustomerID`, `EmployeeID`) VALUES (5, '2020-06-15', 3, '18:30:00', 1, 3);
+INSERT INTO `LittleLemonDB`.`Bookings` (`BookingID`, `BookingDate`, `TableNo`, `BookingSlot`, `CustomerID`, `EmployeeID`) VALUES (6, '2020-08-05', 5, '21:00:00', 2, 2);
+INSERT INTO `LittleLemonDB`.`Bookings` (`BookingID`, `BookingDate`, `TableNo`, `BookingSlot`, `CustomerID`, `EmployeeID`) VALUES (7, '2021-08-17', 2, '19:30:00', 3, 5);
 
 COMMIT;
 
@@ -299,9 +300,9 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `LittleLemonDB`;
-INSERT INTO `LittleLemonDB`.`Orders` (`OrderID`, `OrderDate`, `BookingID`, `BillAmount`, `SaleQuantity`, `TotalCost`, `Discount`, `MenuID`) VALUES ('1', '2020-08-05', 2, 353.50, 5, 200.00, 20.00, 4);
-INSERT INTO `LittleLemonDB`.`Orders` (`OrderID`, `OrderDate`, `BookingID`, `BillAmount`, `SaleQuantity`, `TotalCost`, `Discount`, `MenuID`) VALUES ('2', '2021-08-17', 3, 211.00, 3, 150.30, 0.00, 2);
-INSERT INTO `LittleLemonDB`.`Orders` (`OrderID`, `OrderDate`, `BookingID`, `BillAmount`, `SaleQuantity`, `TotalCost`, `Discount`, `MenuID`) VALUES ('3', '2020-06-15', 1, 188.75, 1, 77.70, 9.5, 3);
+INSERT INTO `LittleLemonDB`.`Orders` (`OrderID`, `OrderDate`, `BookingID`, `BillAmount`, `SaleQuantity`, `TotalCost`, `Discount`, `MenuID`) VALUES ('1', '2020-08-05', 6, 353.50, 5, 200.00, 20.00, 4);
+INSERT INTO `LittleLemonDB`.`Orders` (`OrderID`, `OrderDate`, `BookingID`, `BillAmount`, `SaleQuantity`, `TotalCost`, `Discount`, `MenuID`) VALUES ('2', '2021-08-17', 7, 211.00, 3, 150.30, 0.00, 2);
+INSERT INTO `LittleLemonDB`.`Orders` (`OrderID`, `OrderDate`, `BookingID`, `BillAmount`, `SaleQuantity`, `TotalCost`, `Discount`, `MenuID`) VALUES ('3', '2020-06-15', 5, 188.75, 1, 77.70, 9.5, 3);
 
 COMMIT;
 
